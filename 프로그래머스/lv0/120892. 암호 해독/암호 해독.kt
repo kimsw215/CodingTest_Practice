@@ -6,6 +6,8 @@ class Solution {
             if(i != 0 && i % code == 0) answer += str[i]
         }
         
+       
+        // answer.filterIndexed { index, c ->  (index+1) % code == 0})
         
         return answer
     }
