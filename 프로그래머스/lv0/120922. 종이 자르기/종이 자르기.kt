@@ -1,5 +1,5 @@
 class Solution {
     fun solution(M: Int, N: Int): Int {
-        return (M/1 - 1) + M * (N - 1)
+        return M * N - 1 // (M - 1) + M * (N - 1)
     }
 }
