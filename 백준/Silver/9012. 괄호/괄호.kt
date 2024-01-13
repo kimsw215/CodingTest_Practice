@@ -12,7 +12,7 @@ fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
 
         try {
             ps.forEach {
-                if (it == '(') stack.push('C')
+                if (it == '(') stack.push('(')
                 else stack.pop()
             }
             if (stack.isEmpty()) println("YES")
