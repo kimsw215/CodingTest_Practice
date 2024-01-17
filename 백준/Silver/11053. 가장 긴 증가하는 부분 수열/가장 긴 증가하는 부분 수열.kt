@@ -1,15 +1,16 @@
 import java.io.*
+import java.util.StringTokenizer
 import kotlin.math.max
 
 fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     val cnt = readLine()!!.toInt()
-    var num = readLine()!!.toString()
+    var num = StringTokenizer(readLine())
     val numbers = mutableListOf<Int>()
 
     val dp = Array(cnt){1}
 
-    for (i in num.split(" ")) {
-        numbers.add(i.toInt())
+    while(num.hasMoreTokens()){
+        numbers.add(num.nextToken().toInt())
     }
 
     for (i in 0 until cnt) {
