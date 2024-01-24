@@ -1,18 +1,24 @@
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.util.StringTokenizer
 
 fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     var n = readLine()!!.toInt()
-    val s = readLine()
+    var s = StringTokenizer(readLine())
     val arr = mutableListOf<Int>()
     var sum = 0
-    for(i in s.split(" ")) arr.add(i.toInt())
+    
+    repeat(n) {
+        arr.add(s.nextToken().toInt())
+    }
+    
     arr.sort()
+    
     for(i in 0 until n) {
         for(j in 0..i){
             sum += arr[j]
         }
     }
     
-    println(sum)
+    print(sum)
 }
