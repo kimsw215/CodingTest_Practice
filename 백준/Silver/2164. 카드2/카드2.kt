@@ -9,8 +9,7 @@ fun main() {
 
     while (que.size != 1) {
         que.remove()
-        val rest = que.remove()
-        que.add(rest)
+        que.add(que.remove())
     }
     que.peek()?.let { println(it) }
 }
