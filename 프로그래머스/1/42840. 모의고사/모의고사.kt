@@ -16,7 +16,9 @@ class Solution {
         for(i in 0..2) {
             if(ansMut.maxOrNull() == ansMut[i]) answer = answer.plus(i + 1)
         }
+        
         answer.sort()
+        
         return answer
     }
 }
