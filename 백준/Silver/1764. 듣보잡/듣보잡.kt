@@ -1,19 +1,32 @@
+import java.io.BufferedReader
+import java.io.InputStreamReader
+
 fun main() {
-    val (n,m) = readln().split(" ").map { it.toInt() }
-    val nList = HashSet<String>()
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val bw = System.out.bufferedWriter()
+
+    val (n, m) = br.readLine().split(" ").map { it.toInt() }
+    val nSet = HashSet<String>()
     val result = mutableListOf<String>()
-    
+
     repeat(n) {
-        nList.add(readln())
+        nSet.add(br.readLine())
     }
 
     repeat(m) {
-        val word = readln()
-        if(nList.contains(word)) result.add(word)
+        val word = br.readLine()
+        if (nSet.contains(word)) {
+            result.add(word)
+        }
     }
-    println(result.size)
-    result.sorted().forEach {
-        println(it)
-    }
-    
+
+    // 정렬 추가
+    result.sort()
+
+    bw.write("${result.size}\n")
+    result.forEach { bw.write("$it\n") }
+
+    bw.flush()
+    bw.close()
+    br.close()
 }
