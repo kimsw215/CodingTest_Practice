@@ -1,26 +1,24 @@
 import java.util.Stack
 
 fun main() {
-     val W = Stack<Int>()
+    val S = Stack<Int>()
     val N = readln().toInt()
     var cur = 1
-    val List = readln().split(" ").map { it.toInt() }.toMutableList().forEach {
+    val List = readln().split(" ").map{ it.toInt() }.forEach {
         if(cur == it) {
             cur++
         } else {
-            while(W.isNotEmpty()) {
-                if(W.peek() == cur) {
-                    W.pop()
+            while(S.isNotEmpty()) {
+                if(S.peek() == cur) {
+                    S.pop()
                     cur++
                 } else break
             }
-            W.push(it)
+            S.push(it)
         }
     }
-
-    while(W.isNotEmpty()) {
-        if(W.pop() == cur) cur++ else break
+    while(S.isNotEmpty()) {
+        if(S.pop() == cur) cur++ else break
     }
-
-    println(if(W.isEmpty()) "Nice" else "Sad")
+    println(if(S.isEmpty()) "Nice" else "Sad")
 }
