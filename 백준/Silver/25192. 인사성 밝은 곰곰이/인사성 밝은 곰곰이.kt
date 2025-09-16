@@ -1,20 +1,19 @@
 fun main() {
     var cnt = 0
-    var chat = mutableListOf<String>()
-    for(i in 0 until readln().toInt()) {
+    val chatSet = mutableSetOf<String>()
+    
+    repeat(readln().toInt()) {
         val text = readln()
-        if(text != "ENTER") {
-            chat.add(text)
-        } else {
-            if(chat.isNotEmpty()) {
-                cnt += chat.toHashSet().size
-                chat.clear()
+        
+        when (text) {
+            "ENTER" -> {
+                cnt += chatSet.size
+                chatSet.clear()
             }
+            else -> chatSet.add(text)
         }
     }
-    if(chat.isNotEmpty()) {
-        cnt += chat.toHashSet().size
-        chat.clear()
-    }
+    cnt += chatSet.size
+    
     println(cnt)
 }
