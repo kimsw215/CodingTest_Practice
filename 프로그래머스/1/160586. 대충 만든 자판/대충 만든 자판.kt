@@ -1,35 +1,23 @@
 class Solution {
     fun solution(keymaps: Array<String>, targets: Array<String>): IntArray {
-    val costMap = mutableMapOf<Char, Int>()
-    for (keymap in keymaps) {
-        for ((index, key) in keymap.withIndex()) {
-            val cost = index + 1
-            costMap[key] = minOf(costMap.getOrDefault(key, Int.MAX_VALUE), cost)
-        }
-    }
+        val costMap = mutableMapOf<Char, Int>()
 
-    val answer = mutableListOf<Int>()
-
-    for (word in targets) {
-        var total = 0
-        var possible = true
-
-        for (c in word) {
-            val cost = costMap[c]
-            if (cost == null) {
-                possible = false
-                break   // 이 단어는 더 볼 필요 없음, for문만 탈출
+        // 1단계: 모든 자판을 훑으면서, 글자마다 "가장 적은 타수"만 남기기
+        for (keymap in keymaps) {
+            for ((index, key) in keymap.withIndex()) {
+                val cost = index + 1
+                costMap[key] = minOf(costMap.getOrDefault(key, Int.MAX_VALUE), cost)
             }
-            total += cost
         }
 
-        if (possible) {
-            answer.add(total)
-        } else {
-            answer.add(-1)
-        }
+        // 2단계: 각 target 단어의 타수를 costMap 기준으로 합산
+        return targets.map { word ->
+            var total = 0
+            for (c in word) {
+                val cost = costMap[c] ?: return@map -1   // 아예 못 만드는 글자면 -1
+                total += cost
+            }
+            total
+        }.toIntArray()
     }
-
-    return answer.toIntArray()
-}
 }
