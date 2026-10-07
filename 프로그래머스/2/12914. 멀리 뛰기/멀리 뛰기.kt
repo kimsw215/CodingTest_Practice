@@ -1,6 +1,6 @@
 class Solution {
     fun solution(n: Int): Long {
-        var answer: Long = fibonacci(n) 
+        var answer: Long = fibonacci(n+1)
         return answer
     }
     
@@ -8,7 +8,7 @@ class Solution {
         if( n <= 0 ) return 0
         if( n <= 1 ) return 1
 
-        var pre = 1L
+        var pre = 0L
         var cur = 1L
         for(i in 2..n) {
             val next = (cur + pre) % 1234567
